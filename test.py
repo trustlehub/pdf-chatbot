@@ -42,9 +42,10 @@ def vector_store(text_chunks):
 
 
 def get_conversational_chain(tools, ques, chat_history):
-    os.environ["ANTHROPIC_API_KEY"] = os.getenv["ANTHROPIC_API_KEY"]
+    api_key = os.environ["ANTHROPIC_API_KEY"]
     llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0,
-                     api_key=os.environ["ANTHROPIC_API_KEY"])
+                     api_key=api_key)
+    print(llm)
 
     # Prepare the chat history messages for the prompt
     prompt_messages = [
